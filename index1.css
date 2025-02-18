@@ -1,0 +1,53 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.cards_container{
+    position: relative;
+    top: 20vh;
+    left: 60vh;
+    height: fit-content ;
+    width: fit-content;
+    padding: 5vh;
+    border-radius: 10px;
+    background-color: rgb(46, 80, 46);
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 5px;
+    z-index: 0;
+    
+}
+
+.cards{
+    font-size: 7vh;
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    margin: auto;
+    background-color: black;
+    border-radius: 10px;
+    width: 13vh;
+    height: 13vh;
+    color: black;  
+     
+    
+}
+.cards.flipped{
+    font-size: 7vh;
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    margin: auto;
+    background-color: rgb(0, 0, 0);
+    border-radius: 10px;
+    width: 13vh;
+    height: 13vh;
+    color: black;
+    transition: all .8s ease;
+    transform: rotateY(180deg);  
+    
+}
+
