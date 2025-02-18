@@ -70,7 +70,6 @@ cards.forEach(cards_container => {
 
           lock_board = true;
          
-          console.log('fuck me');
           checkmatch();
 
           flipped_cards = [];
@@ -131,7 +130,7 @@ function checkmatch() {
 
 setInterval(() => {
   
-  if (score == 1) {
+  if (score == 9) {
     setTimeout(() => {
       alert('YOU WON !!!');
     }, 2500);
