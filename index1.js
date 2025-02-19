@@ -29,14 +29,17 @@ let r = Math.floor(Math.random()* cards_length);
 
     
 }
-console.log(cards);
+
 
 let first_card = null;
 let second_card = null ;
 let clicks = 0;
 
+let f = 0;
 
-cards.forEach(cards_container => {
+
+cards.forEach(cards_container  => {
+
     var container  = document.getElementById('cards_container');
 
     var card = document.createElement('div');
@@ -55,26 +58,37 @@ cards.forEach(cards_container => {
 
      
 
-        if (!lock_board) {
+        if (!lock_board ) {
 
-          click_sound();
+        click_sound();
         card.classList.add('flipped');
 
         card.dataset.content = cards_container;
+        card.dataset.index = f;
+        f++;
+        
+        
         card.textContent=cards_container;
+      
 
         flipped_cards.push(cards_container);
         flipped_cards2.push(card);
 
-        if (flipped_cards.length == 2) {
+        let [card1, card2 ] = flipped_cards;
+
+        if (flipped_cards.length == 2 ) {
 
           lock_board = true;
          
+     
           checkmatch();
 
           flipped_cards = [];
+         
           
         }
+
+        
 
       }
         
@@ -97,9 +111,15 @@ function checkmatch() {
   let [card1, card2 ] = flipped_cards;
   let [c1, c2 ] = flipped_cards2;
 
-  if (card1 == card2) {
-    score++;
+
+  
+  
+
+  if (c1.dataset.content == c2.dataset.content && c1.dataset.index != c2.dataset.index) {
+  
+    
     setTimeout(() => {
+      score++;
       lock_board = false;
       flipped_cards2 = [];
     }, 1000);
@@ -107,14 +127,16 @@ function checkmatch() {
     
   }else{
    
-    
-
+   
+   
     setTimeout(() => {
           
     flipped_cards2.forEach(element => {
       element.innerHTML ="";
+      element.dataset.content ='' ;
       element.classList.remove('flipped');
       lock_board = false;
+      flipped_cards2 = [];
     });
 
 
@@ -124,8 +146,10 @@ function checkmatch() {
     
   }
 
+ }
 
-}
+
+
    
 
 setInterval(() => {
